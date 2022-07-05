@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+	<head>
+   	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <title>Exemplo 4 - Formulário com validação</title>
+   	</head>
+	
+	<style>
+		form div {
+			display:table-row;
+			padding: 4px;
+		}
+		
+		label, input, select {
+			display: table-cell;
+			margin: 5px;
+			text-align: left;
+		} 
+		
+		form div div {
+			display: table-cell;
+		}
+	</style>	
+	
+   	<body>
+   		<h2> Informações pessoais com validação </h2>
+      	<form action="#" th:action="@{/validated}" th:object="${validatedInfos}" method="post">
+      	
+      	<div>
+         	<label>Número: </label> 
+         	<input type = "text" th:field="*{id}"/>
+         	<span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+      	</div>
+      	
+      	<div>
+         	<label>Nome: </label> 
+         	<input type = "text" th:field="*{name}"/>
+         	<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+      	</div>
+      	
+      	<div>
+         	<label>Email:</label> 
+         	<input type = "text" th:field="*{email}"/>
+         	<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+      	</div>
+      	
+      	<div>
+         	<label>Decisão: </label> 
+         	<input type = "radio" th:field="*{permission}" value="Sim"/> Sim
+         	<input type = "radio" th:field="*{permission}" value="Não"/> Não
+         	<span th:if="${#fields.hasErrors('permission')}" th:errors="*{permission}"></span>
+      	</div>
+      	
+      	<div>
+         	<label>Opções: </label> 
+         	<select th:field="*{options}"> 
+         		<option th:each="listItem : ${optionsList}" th:value="${listItem}" th:text="${listItem}"/>
+         	</select>
+         	<span th:if="${#fields.hasErrors('options')}" th:errors="*{options}"></span>
+      	</div>
+
+      	<div>
+         	<label>Detalhes:</label> 
+         	<input type = "text" th:field="*{content}"/>
+         	<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"> Erros nos detalhes</span>
+      	</div>
+      	
+      	<p> <input type="submit" value="Submit" /> </p>
+      	 
+      	</form>
+   	</body>
+</html>

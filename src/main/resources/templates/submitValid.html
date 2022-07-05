@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>Informações pessoais válidas</title>
+	</head>
+
+	<body>
+		<h2> Informações pessoais válidas </h2>
+		<p th:text=" 'Número:   ' + ${validatedInfos.id}"         />
+		<p th:text=" 'Nome:     ' + ${validatedInfos.name}"       />
+		<p th:text=" 'Email:    ' + ${validatedInfos.email}"      />
+		<p th:text=" 'Decisão:  ' + ${validatedInfos.permission}" />
+		<p th:text=" 'Opção:    ' + ${validatedInfos.options}"    />
+		<p th:text=" 'Descrição:' + ${validatedInfos.content}"    />
+		
+		<a href="/validated">Submeter outra vez </a>
+
+	</body>
+</html>
