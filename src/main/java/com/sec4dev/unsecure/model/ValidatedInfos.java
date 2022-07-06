@@ -28,7 +28,7 @@ public class ValidatedInfos {
 	private String options;
 	
 	@NotNull
-	@Pattern(regexp= "[\sa-zA-Z0-9]{3,255}", message = "Somente letras e números") // espaços também
+	@Pattern(regexp= "[\sa-zA-Z0-9]{3,255}", message = "Somente letras e números") // espaços tambem
 	private String content;
 	
 	public Long getId() {
